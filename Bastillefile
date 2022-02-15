@@ -1,0 +1,14 @@
+PKG ccze colordiff htop tmux zsh
+PKG nginx jenkins
+
+CP usr /
+# new nginx.conf with conf.d include
+# tls/ and conf.d/ dirs
+# jenkins.conf vhost
+# self-signed cert (or generate a new pair)
+
+SERVICE jenkins enable
+SERVICE jenkins start
+
+SERVICE nginx enable
+SERVICE nginx start
