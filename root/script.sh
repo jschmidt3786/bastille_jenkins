@@ -6,8 +6,8 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout jenkins.key -out jen
 
 printf "FQDN for vhost? (and optionally for Let's Encrypt) " >&2
 read -r FQDN
-sed -i '/usr/local/etc/nginx/conf.d/jenkins.conf.sample' s/FQDN/"$FQDN"/ /usr/local/etc/nginx/conf.d/jenkins.conf
-diff -u /usr/local/etc/nginx/conf.d/jenkins.conf.sample /usr/local/etc/nginx/conf.d/jenkins.conf
+sed s/FQDN/"$FQDN"/ /usr/local/etc/nginx/conf.d/jenkins.conf.sample > /usr/local/etc/nginx/conf.d/jenkins.conf
+colordiff -U1 /usr/local/etc/nginx/conf.d/jenkins.conf.sample /usr/local/etc/nginx/conf.d/jenkins.conf
 echo
 
 printf "attempt adding a Let's Encrypt signed keypair? (anything but 'y' cancels) " >&2
