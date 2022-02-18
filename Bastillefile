@@ -7,8 +7,13 @@ CP usr /
 # jenkins.conf vhost
 # self-signed cert (or generate a new pair)
 
+SYSRC jenkins_args="--httpListenAddress=127.0.0.1"
 SERVICE jenkins enable
 SERVICE jenkins start
 
 SERVICE nginx enable
 SERVICE nginx start
+
+CP root /
+CMD /root/script.sh
+
